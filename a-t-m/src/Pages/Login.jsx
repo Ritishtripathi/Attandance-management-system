@@ -20,6 +20,8 @@ const Login=()=>{
           const response=await axios.post('http://localhost:3001/login',data)
           if(response && response.data){
             console.log(response.data);
+            localStorage.setItem("user",JSON.stringify(response.data.Faculty));
+            console.log('local data',localStorage);
             Swal.fire({
                 icon:'success',
                 title:'success',

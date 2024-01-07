@@ -7,7 +7,9 @@ import Swal from "sweetalert2";
 import Studentdata from './Studentdata';
 import Footer from './Footer';
 const Student=()=>{
-
+  const storedata=localStorage.getItem('data');
+  const data=storedata?JSON.parse(storedata):null;
+  const name=data.name;
   const[Data,setdata]=useState({
     name:'',
     rollno:'',
@@ -46,7 +48,8 @@ const Student=()=>{
                 <Header/>
             </Row><br></br>
             <Row>
-              <Col sm={8}></Col>
+              <Col sm={1}></Col>
+              <Col sm={7}><h3>Welcome : {name}</h3></Col>
               <Col sm={2}> <Link to='/Facultydata'> <button className="logout-btn">Faculty Information</button></Link></Col>
               <Col sm={2}> <Link to='/Home'> <button className="logout-btn">Logout</button></Link></Col>
             </Row>

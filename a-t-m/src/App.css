@@ -3,7 +3,7 @@ body{
 }
 .header{
     height:12vh;
-    background:green;
+    background:rgb(55, 54, 54);
     width:100%;
 }
 .header-text{
@@ -11,6 +11,7 @@ body{
     color :white;
     text-align:center;
     font-size:50px;
+   
 }
   
 
