@@ -61,7 +61,7 @@ const Signup=()=>{
             <Col sm={3}></Col>
             <Col sm={6}>
                 <div className="signup-container">
-                    <center><h2>Faculty Registration</h2></center><br/>
+                    <center><h2 className="heading-signup">Faculty Registration</h2></center><br/>
                     <form onSubmit={handlesubmit}>
                         <input type='text' placeholder="Name" className="signup-input" name="name" value={data.name} onChange={facultyhandle} required/>
                         <input type='email' placeholder="Email" className="signup-input" name="email" value={data.email} onChange={facultyhandle}  required/>

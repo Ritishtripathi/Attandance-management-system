@@ -1,6 +1,11 @@
 body{
-   background: #313131;
+  height:100vh;
+  width:100%;
+  background: #313131;
 }
+
+
+
 .header{
     height:12vh;
     background:rgb(55, 54, 54);
@@ -11,11 +16,31 @@ body{
     color :white;
     text-align:center;
     font-size:50px;
-   
+}
+
+@media (max-width: 600px) {
+  .header {
+    height: 8vh; 
+  }
+  
+  .header-text {
+    padding-top:2vh;
+    font-size: 20px; 
+    letter-spacing:2px;
+  }
+  .img-pic{
+    display:none;
+  }
+  .datatable{
+    display: none;
+  }
 }
   
 
 /* login form css */
+
+
+
 
 .form-container {
     width: 400px;
@@ -139,7 +164,7 @@ body{
   }
   .signup-container{
     height:80vh;
-    width:40vw;
+    width:45vw;
   }
   .signup-input{
     height:8vh;
@@ -194,21 +219,71 @@ body{
     height:6vh;
     width:77vw;
     margin-top:5vh;
+    border:none;
     background:green;
     color:#fff;
   }
   .logout-btn{
     height:6vh;
-    width:10vw;
+    width:12vw;
     background:green;
     color: #fff;
+    border:none;
     margin-right:1vw;
   }
   .backbtn{
     height:6vh;
     width:10vw;
     background:green;
+    outline: none;
     color: #fff;
     margin-left:40%;
   
   }
+
+  @media (max-width: 600px) {
+  .signup-container{
+    height:80vh;
+    width:100vw;
+    padding-left:5vw;
+  }
+  .signup-input{
+    height:8vh;
+    width:85vw;
+    background: #dedede;
+    border:none;
+    margin-top:2vh;
+    border-radius:4px;
+  }
+  .btn-register{
+    height:8vh;
+    width:85vw;
+    background:green;
+    border:none;
+    color: #fff;
+    border-radius:5px;
+  }
+  .backbtn{
+    height:6vh;
+    width:40vw;
+    border:none;
+    background:green;
+    outline: none;
+    color: #fff;
+    margin-left:55%;
+  } 
+  .logout-btn{
+    height:6vh;
+    width:40vw;
+    background:green;
+    color: #fff;
+    border:none;
+    border-radius:5px;
+    margin-left:47vw;
+  }
+  .heading-signup{
+   text-align: center;  
+  }
+
+  }
+ 

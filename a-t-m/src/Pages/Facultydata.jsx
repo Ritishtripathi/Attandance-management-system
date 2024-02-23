@@ -8,7 +8,7 @@ function Facultydata(){
     useEffect(()=>{
         const fetchData=async()=>{
             try{
-                const response=await axios.get('http://localhost:3001/faculty/data');
+                const response=await axios.get('http://localhost:3001/facultydata');
                 setUserData(response.data.Faculty);
             }
             catch(error){

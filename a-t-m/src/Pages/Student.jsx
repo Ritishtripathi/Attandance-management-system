@@ -8,14 +8,17 @@ import Studentdata from './Studentdata';
 import Footer from './Footer';
 const Student=()=>{
   const storedata=localStorage.getItem('data');
-  const data=storedata?JSON.parse(storedata):null;
-  const name=data.name;
+  const users=JSON.parse(storedata);
+  const name=users.name;
+  
   const[Data,setdata]=useState({
     name:'',
     rollno:'',
     course:'',
     semester:'',
-    branch:''
+    branch:'',
+    userId:users._id,
+
   });
 
   const handlechage=(e)=>{
@@ -49,14 +52,14 @@ const Student=()=>{
             </Row><br></br>
             <Row>
               <Col sm={1}></Col>
-              <Col sm={7}><h3>Welcome : {name}</h3></Col>
+              <Col sm={6}><h3>Welcome : {name}</h3></Col>
               <Col sm={2}> <Link to='/Facultydata'> <button className="logout-btn">Faculty Information</button></Link></Col>
               <Col sm={2}> <Link to='/Home'> <button className="logout-btn">Logout</button></Link></Col>
             </Row>
             <br/><br/><br/>
 
             <Row>
-                <Col sm={12}>
+                <Col sm={11}>
                     <div className="add-student">
                         <h2 className="heading-title">Add new student</h2><br/>
                         <form onSubmit={handlesubmit}>
@@ -98,9 +101,11 @@ const Student=()=>{
                     </div>
                 </Col>
             </Row><br/><br/>
-            <Row>
+            <Row >
+              <div className="datatable">
               <center><h1>Students List</h1></center>
               <Studentdata/>
+              </div>
             </Row><br/><br/><br/><br/>
             <Row>
               <Footer/>

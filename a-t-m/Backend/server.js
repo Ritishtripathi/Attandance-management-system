@@ -39,7 +39,8 @@ const student=mongoose.model('student',{
     rollno:String,
     course:String,
     semester:String,
-    branch:String
+    branch:String,
+    userId:String
 });
 
 //User post data API
@@ -67,8 +68,8 @@ app.post('/login',async(req,res)=>{
         if(!Faculty || Faculty.password!==password){
             return res.status(404).json({message:'invailid creditional'});
         }
-            res.json({message:'login successfully'});
-            
+            res.json({message:'login successfully',Faculty});
+            console.log(Faculty);  
     }
     catch(error){
         console.error(error);
@@ -79,9 +80,9 @@ app.post('/login',async(req,res)=>{
 //Student post data API
 
 app.post('/student',async(req,res)=>{
-    const {name,rollno,course,semester,branch}=req.body;
+    const {name,rollno,course,semester,branch, userId}=req.body;
     try{
-        const students=new student({name,rollno,course,semester,branch});
+        const students=new student({name,rollno,course,semester,branch, userId});
         await students.save();
         res.status(200).json({message:'data sent suceessfully!'});
     }
@@ -93,26 +94,49 @@ app.post('/student',async(req,res)=>{
 
 //Student get database
 
-app.get('/student/data',async(req,res)=>{
+app.get('/student/:userId',async(req,res)=>{
+   const  userId = req.params.userId;
   try{
-    const Student= await student.find();
+    const Student = await student.find({userId});
+ if(Student.length > 0){
     res.json({Student})
+    
+ }
+  else{
+    res.status(404).json({mess:'not found data'})
+  } 
   }
-  catch(error){
+  catch(error){  
     console.error(error);
     res.status(404).json({message:'unsepcted error'});
   }
 })
 
 //Faculty get database
-
-app.get('/faculty/data',async(req,res)=>{
+app.get('/facultydata',async(req,res)=>{
+   
     try{
         const Faculty= await faculty.find();
-        res.json({Faculty});
+            res.json({Faculty});
     }
     catch(error){
         console.error(error);
         res.status(404).json({message:'unspected error'});
     }
 })
+
+// DELETE endpoint to delete a student by ID
+app.delete('/student/:id', async (req, res) => {
+    const studentId = req.params.id;
+    try {
+        // Find the student by ID and delete it
+        const deletedStudent = await student.findByIdAndDelete(studentId);
+        if (!deletedStudent) {
+            return res.status(404).json({ message: 'Student not found' });
+        }
+        res.status(200).json({ message: 'Student deleted successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Unexpected error' });
+    }
+});
