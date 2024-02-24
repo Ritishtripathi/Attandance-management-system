@@ -15,12 +15,10 @@ function Home(){
                 <img src={logo} className="img-pic"/>
                 </Col>
                <Col sm={4}></Col>
-               <Col sm={4}>
+               <Col sm={4} className="loginbox">
                 <Login/>
                </Col>
-            </Row><br/>
-            <Row>
-                <Footer/>
+               <Footer/>
             </Row>
         </Container>
     )
